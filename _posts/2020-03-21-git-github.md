@@ -6,21 +6,19 @@ tags: [guias]
 comments: false
 ---
 
-
 O Git é o _standard_ da indústria quando se fala em controlo de versões. Se já alguma vez pesquisaram sobre isto, já devem ter lido que permite "voltar ao passado" do nosso código, permitindo regressar a versões anteriores, voltar à versão atual, programar em paralelo, etc.
 
-No curso, a grande maioria utiliza o Git em conjunto com o GitHub. Por estarem tão interligados no nosso _workflow_, por vezes é difícil distinguir o que é que é Git e o que é que é GitHub. Algo que também acontece é usarmos o Git e GitHub como uma simples plataforma de partilha de código, em que nós fazemos _push_ e os nossos colegas fazem _pull_, parecido, em grande forma, a enviar os ficheiros de código pelo Facebook Messenger.
+No curso, a grande maioria utiliza o Git em conjunto com o GitHub. Por estarem tão interligados no nosso _workflow_, por vezes é difícil distinguir o que é que é Git e o que é que é GitHub. Algo que também acontece é usarmos o Git e GitHub como uma simples plataforma de partilha de código, em que nós fazemos _push_ e os nossos colegas fazem _pull_, não sendo, provavelmente, a melhor maneira, é bem melhor do que partilhar os ficheiros por _Facebook Messenger_ e ter de lidar manualmente com o que mudou entretanto.
 
 Este guia visa clarificar o que são o Git e o GitHub e como devem ser utilizados, dando exemplos práticos desde a instalação do Git à programação em paralelo via GitHub. O guia está feito para ser acompanhado num ambiente Unix (seja em Mac ou numa distribuição Linux), que é o que aconselhamos para quem está a aprender. Sendo _cross-platform_, o Git também funciona no Windows e não terás qualquer problema em seguir este guião nesse SO. Apesar de haver aplicações gráficas para usar Git, vamos usar exclusivamente o terminal Depois de aprenderes, está à vontade para usar qualquer aplicação gráfica que gostes; é mais fácil passar do terminal para um ambiente gráfico do que o contrário.
 
 A primeira parte, **Git Basics**, é um tutorial de Git que não assume qualquer conhecimento prévido da plataforma. Se já te sentes confortável com o Git e só pretendes aprender como melhorar o _workflow_ do teu grupo, podes passar diretamente para a secção **GitHub - Working remote**.
 
-
-
 ![Git]({{ 'img/git-logo.png' | relative_url }})
+
 # Git Basics
 
->Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+> Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
 _'nough said._
 
@@ -31,19 +29,20 @@ Por agora, vamos esquecer o _distributed_ e vamos assumir que o Git é local, ou
 A instalação é simples, basta correr o comando apropriado à vossa distribuição:
 
 **Ubuntu/Mint:**
+
 ```bash
-$ sudo apt install git 
+$ sudo apt install git
 ```
 
 **Manjaro/Arch Linx:**
+
 ```bash
 $ sudo pacman -S git
 ```
 
-**[Mac/Windows](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)**
+**[Mac/Windows](https://git-scm.com/downloads)**
 
 **Nota:** Na instalação em Windows, podes aceitar as opções recomenddas. Aproveita é para trocares o editor de texto _default_ para o teu favorito, assim poderás, mais abaixo, ignorar essa configuração.
-
 
 Depois de instalado, convém fazer uma pequena configuração que consiste em identificarem-se ao Git:
 
@@ -58,13 +57,13 @@ $ git config --global user.email you@email.com
 Podem também alterar o editor de texto do Git com o comando
 
 ```
-$ git config --global core.editor "nome_do_editor" 
+$ git config --global core.editor "nome_do_editor"
 ```
 
 em que nome "nome_do_editor" é o nome que usariam para abrir o editor de texto através do terminal. Por exemplo, para definir o Visual Studio Code, o comando seria
 
 ```
-$ git config --global core.editor "code" 
+$ git config --global core.editor "code"
 ```
 
 {: .box-warning}
@@ -81,7 +80,7 @@ Para criar um repositório, devem fazê-lo dentro na raíz do projeto.
 
 Por exemplo, eu tenho um projeto de LI3 que estou a começar, guardado em `~/dev/li3`. O projeto já tem alguns ficheiros de código e eu quero criar um repositório Git para me ajudar daqui para a frente:
 
-```
+```bash
 $ cd ~/dev/li3
 $ ls
 enunciado.pdf  include  src
@@ -89,7 +88,7 @@ enunciado.pdf  include  src
 
 Criar um repositório é simples:
 
-```
+```bash
 $ git init
 Initialized empty Git repository in /home/miguel/dev/li3/.git/
 ```
@@ -263,8 +262,8 @@ Estou pronto para fazer o _commit_! Um _commit_ contém uma mensagem que descrev
 
 Um _commit_ é feito com um comando simples:
 
-```
-git commit
+```bash
+$ git commit
 ```
 
 Este comando abre o editor de texto _default_ do sistema, onde podemos escrever a mensagem. O assunto é escrito primeiro, seguido do corpo, separados por uma linha vazia:
@@ -278,8 +277,8 @@ Isto é o corpo
 
 No entanto, a grande maioria das vezes, o assunto da mensagem é suficiente. Se for esse o caso, podemos utilizar antes o comando
 
-```
-git commit -m "O assunto aqui"
+```bash
+$ git commit -m "O assunto aqui"
 ```
 
 que não abre o editor de texto e faz imediatamente o _commit_.
@@ -287,8 +286,8 @@ que não abre o editor de texto e faz imediatamente o _commit_.
 Para o meu repositório, vou executar o comando `git commit -m "Init"`. Visto que este é o meu primeiro _commit_ utilizo uma mensagem que simbolize que estou a inicializar o repositório com código pré-existente.
 
 {: .box-note}
-**Nota:** Também há boas práticas a seguir na escrita de mensagens: devem ser claras e escritas na mesma língua usada no código, ou seja, de preferência, em Inglês. O corpo da mensagem deve ser usado para descrever o **quê** e o **porquê** do _commit_ de uma forma mais detalhada, não o **como**. O assunto deve ser capitalizado (a primeira letra deve ser uma maiúscula) e não deve acabar com um ponto final. O assunto também deve ser escrito no modo imperativo, ou seja, deve fazer sentido quando colocado na frase **_This commit will ..._**, por exemplo:  
-**Boa mensagem:** _Add data structure to represent Person_  
+**Nota:** Também há boas práticas a seguir na escrita de mensagens: devem ser claras e escritas na mesma língua usada no código, ou seja, de preferência, em Inglês. O corpo da mensagem deve ser usado para descrever o **quê** e o **porquê** do _commit_ de uma forma mais detalhada, não o **como**. O assunto deve ser capitalizado (a primeira letra deve ser uma maiúscula) e não deve acabar com um ponto final. O assunto também deve ser escrito no modo imperativo, ou seja, deve fazer sentido quando colocado na frase **_This commit will ..._**, por exemplo:
+**Boa mensagem:** _Add data structure to represent Person_
 **Má mensagem:** _Added data structure_
 
 Agora o estado do meu repostório é
@@ -311,6 +310,7 @@ O Git continua a avisar que o `enunciado.pdf` e o `src/program` não estão _tra
 Vamos criar um. No ficheiro, só temos de especificar o caminho do ficheiro que queremos ignorar:
 
 ```bash
+$ cat .gitignore
 enunciado.pdf
 src/program
 # Isto é um comentário
@@ -356,11 +356,12 @@ nothing added to commit but untracked files present (use "git add" to track)
 Teria de modificar o meu `.gitignore` e adicionar o nome dos ficheiros novos... Ou posso generalizar, alterando o meu `.gitignore` para
 
 ```bash
+$ cat .gitignore
 *.pdf
 src/program
 ```
 
-Assim, qualquer ficheiro no meu repositório cujo nome termine em `.pdf` é automaticamente ignorado! Mas como ignorar todos os binários em `src/` se eles não têm uma extensão? A forma mais fácil é, simplesmente, alterar a `Makefile`para os gerar noutra diretoria e ignorar todo o conteúdo desssa diretoria! Depois de criar a diretoria `build` e alterar a `Makefile` , o estado do repositório é
+Assim, qualquer ficheiro no meu repositório cujo nome termine em `.pdf` é automaticamente ignorado! Mas como ignorar todos os binários em `src/` se eles não têm uma extensão? A forma mais fácil é, simplesmente, alterar a `Makefile` para os gerar noutra diretoria e ignorar todo o seu conteúdo! Depois de criar a diretoria `bin/` e alterar a `Makefile` , o estado do repositório é
 
 ```
 $ git status
@@ -373,18 +374,19 @@ Changes not staged for commit:
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	build/
+	bin/
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-Como previsto, `build/` aparece como _untracked_. O `program` e o `program2` já não aparecem, porque, como pertencem a `build/`, já estão representados, embora ocultos.
+Como previsto, `bin/` aparece como _untracked_. O `program` e o `program2` já não aparecem, porque, como pertencem a `bin/`, já estão representados, embora ocultos.
 
-Para ignorar todo o conteúdo da diretoria, inclusivamente as suas possíveis sub-diretorias, altero o meu `.gitignore` para
+Para ignorar todo o conteúdo da diretoria, inclusivamente as suas possíveis subdiretorias, altero o meu `.gitignore` para
 
 ```bash
+$ cat .gitignore
 *.pdf
-build/
+bin/
 ```
 
 Agora, o estado é
@@ -411,11 +413,11 @@ Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
 	modified:   .gitignore
 	modified:   src/Makefile
-$ git commit -m "Move binaries to 'build/' and ignore 'build/' and all PDFs"
+$ git commit -m "Move binaries to 'bin/' and ignore 'bin/' and all PDFs"
 ```
 
 {: .box-warning}
-**Nota:** Esta não é uma boa mensagem de _commit_. O assunto é um pouco longo (58 caratéres) e ligeiramente confuso de ler. Mas o problema não é a forma como a mensagem foi escrita, mas a forma como o _commit_ foi estruturado: **os _commits_ devem representar uma única alteração ao funcionamento**, independentemente do número de ficheiros alterados para fazer essa alteração. Neste caso, fizemos duas alterações ao funcionamento: mudar a geração dos binários para `build/` e ignorar a diretoria e ignorar todos os PDFs. A mensagem ficou mal em consequência de termos feito num _commit_ o que deveria ter sido feito em dois.
+**Nota:** Esta não é uma boa mensagem de _commit_. O assunto é um pouco longo (58 caratéres) e ligeiramente confuso de ler. Mas o problema não é a forma como a mensagem foi escrita, mas a forma como o _commit_ foi estruturado: **os _commits_ devem representar uma única alteração ao funcionamento**, independentemente do número de ficheiros alterados para fazer essa alteração. Neste caso, fizemos duas alterações ao funcionamento: mudar a geração dos binários para `bin/` e ignorar a diretoria e ignorar todos os PDFs. A mensagem ficou mal em consequência de termos feito num _commit_ o que deveria ter sido feito em dois.
 
 ## Navegar entre _commits_
 
@@ -427,7 +429,7 @@ commit bed65eefe12d19d26c9a7a2ac847245982eba007 (HEAD -> master)
 Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 Date:   Sun Mar 22 12:10:53 2020 +0000
 
-    Move binaries to 'build/' and ignore 'build/' and all PDFs
+    Move binaries to 'bin/' and ignore 'bin/' and all PDFs
 
 commit a582641704c87d0912355aba9cfa189613c56cac
 Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
@@ -459,7 +461,7 @@ index 0000000..89ab085
 +++ b/.gitignore
 @@ -0,0 +1,2 @@
 +*.pdf
-+build/
++bin/
 diff --git a/src/Makefile b/src/Makefile
 index e4fe0a5..b2d8630 100755
 --- a/src/Makefile
@@ -469,7 +471,7 @@ index e4fe0a5..b2d8630 100755
  
  program: $(SOURCES_OBJ) $(MY_LIBS_OBJ)
 -       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o program $(LIBS)
-+       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o ../build/program $(LIBS)
++       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o ../bin/program $(LIBS)
  
  clean:
         rm obj/*.o
@@ -541,7 +543,7 @@ commit bed65eefe12d19d26c9a7a2ac847245982eba007
 Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 Date:   Sun Mar 22 12:10:53 2020 +0000
 
-    Move binaries to 'build/' and ignore 'build/' and all PDFs
+    Move binaries to 'bin/' and ignore 'bin/' and all PDFs
 
 [...]
 ```
@@ -579,7 +581,7 @@ commit bed65eefe12d19d26c9a7a2ac847245982eba007
 Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 Date:   Sun Mar 22 12:10:53 2020 +0000
 
-    Move binaries to 'build/' and ignore 'build/' and all PDFs
+    Move binaries to 'bin/' and ignore 'bin/' and all PDFs
 ```
 
 posso ver que, apesar do resultado do meu _commit_ ter sido apagado (o ficheiro que criei já não está no repositório), a história mantém-se e posso, se quiser, reverter a reversão.
@@ -637,7 +639,7 @@ Switched to branch 'master'
 Também podemos, ao mesmo tempo, criar um _branch_ e mudar para lá:
 
 ```
-git checkout -b branch2    
+$ git checkout -b branch2
 Switched to a new branch 'branch2'
 ```
 
@@ -677,10 +679,10 @@ E se fizer outro _commit_, mas desta vez no `branch2`, com um ficheiro com o mes
 ```
 $ git checkout branch2
 $ vim um_ficheiro.c
-$ cat um_ficheiro.c 
+$ cat um_ficheiro.c
 algum conteudo
 $ git add .
-$ git commit -m "Add a file"         
+$ git commit -m "Add a file"
 [branch2 e7111d4] Add a file
  1 file changed, 1 insertion(+)
  create mode 100644 um_ficheiro.c
@@ -715,9 +717,9 @@ $ git commit -m "Add Hello World"
 Mas agora quero colocar as alterações que fiz no `branch1` no `master`. Quero fazer o `merge` de `branch1` com o `master`. Para isto, temos de, primeiro, mudar para o _branch_ para onde queremos "mandar" as alterações, neste caso o `master`. De seguida, ordenamos o `merge` com `branch1` com o comando `git merge`:
 
 ```
-$ git checkout master            
+$ git checkout master
 Switched to branch 'master'
-$ git merge branch1   
+$ git merge branch1
 Updating 0ec1358..d1c55cb
 Fast-forward
  um_ficheiro.c | 6 ++++++
@@ -734,7 +736,7 @@ O gráfico do histórico do repositório agora está assim (o `branch1` está se
 Por último, quero fazer o `merge` do `branch2` para o `master`. Como já estou no `master`, basta fazer
 
 ```
-$ git merge branch2 
+$ git merge branch2
 CONFLICT (add/add): Merge conflict in um_ficheiro.c
 Auto-merging um_ficheiro.c
 Automatic merge failed; fix conflicts and then commit the result.
@@ -771,7 +773,7 @@ int main(){
 Com o ficheiro corrigido, basta fazer um _commit_.
 
 ```
-$ git status       
+$ git status
 On branch master
 You have unmerged paths.
   (fix conflicts and run "git commit")
@@ -782,8 +784,8 @@ Unmerged paths:
 	both added:      um_ficheiro.c
 
 no changes added to commit (use "git add" and/or "git commit -a")
-$ git add . 
-$ git commit                     
+$ git add .
+$ git commit
 [master 843a289] Merge branch 'branch2'
 ```
 
@@ -841,7 +843,7 @@ $ git log --graph
 | Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 | Date:   Sun Mar 22 12:10:53 2020 +0000
 | 
-|     Move binaries to 'build/' and ignore 'build/' and all PDFs
+|     Move binaries to 'bin/' and ignore 'bin/' and all PDFs
 | 
 * commit a582641704c87d0912355aba9cfa189613c56cac
 | Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
@@ -1019,4 +1021,11 @@ O mundo do Git é imenso, mas agora, se chegaste até aqui, deves conseguir pelo
 
 Há muitos  _sites_ onde podes aprender e muitas ferramentas que podes instalar para melhorar a forma como interages com o Git e o GitHub, é só procurar :)
 
-Se adoraste este guia, se o destestaste, se tens críticas construtivas ou ideias que o possam melhorar, podes-nos contactar diretamente por email (pedagogico@cesium.di.uminho.pt).
+Se adoraste este guia, se o destestaste, se tens críticas construtivas ou ideias que o possam melhorar, podes-nos contactar diretamente por email (<pedagogico@cesium.uminho.pt>).
+
+# Bibliografia
+
+- [Reference Manual](https://git-scm.com/docs)
+- [Git Pro Book](https://git-scm.com/book/en/v2)
+- [Ry's Git Tutorial](https://www.amazon.com/Rys-Git-Tutorial-Ryan-Hodson-ebook/dp/B00QFIA5OC)
+
