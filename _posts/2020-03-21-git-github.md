@@ -17,7 +17,7 @@ A primeira parte, **Git Basics**, é um tutorial de Git que não assume qualquer
 
 
 
-![Git](/img/git-logo.png)
+![Git]({{ 'img/git-logo.png' | relative_url }})
 # Git Basics
 
 >Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
@@ -626,7 +626,7 @@ Mas o que é um _branch_, afinal? Um _branch_ é uma linha de desenvolvimento in
 
 Neste momento, o que temos é isto:
 
-![branch1](/img/branch1.png)
+![branch1]({{ 'img/branch1.png' | relative_url }})
 
 Cada nodo é um _commit_, e a etiqueta de um _branch_ aponta para o nodo (_commit_) em que esse _branch_ está.
 
@@ -651,7 +651,7 @@ $ git commit -m "Add a new test file"
 
 Agora, este é o histórico do repositório:
 
-![branch2](/img/branch2.png)
+![branch2]({{ 'img/branch2.png' | relative_url }})
 
 E se fizer outro _commit_, mas desta vez no `branch2`, com um ficheiro com o mesmo nome mas, em vez de vazio, com algum conteúdo?
 
@@ -669,7 +669,7 @@ $ git commit -m "Add a file"
 
 O histórico do repositório fica assim:
 
-![branch3](/img/branch3.png)
+![branch3]({{ 'img/branch3.png' | relative_url }})
 
 
 {: .box-note}
@@ -710,7 +710,7 @@ Como não vamos precisar mais do `branch1`, podemos apagá-lo com `git branch -d
 
 O gráfico do histórico do repositório agora está assim (o `branch1` está semi-transparente para representar que já não existe):
 
-![branch4](/img/branch4.png)
+![branch4]({{ 'img/branch4.png' | relative_url }})
 
 Por último, quero fazer o `merge` do `branch2` para o `master`. Como já estou no `master`, basta fazer
 
@@ -773,7 +773,7 @@ $ git commit
 
 O histórico final do repositório fica
 
-![branch5](/img/branch5.png)
+![branch5]({{ 'img/branch5.png' | relative_url }})
 
 Podemos ver um esquema parecido a partir do Git:
 
@@ -844,8 +844,8 @@ que nos mostra uma representação parecida com as imagens que temos visto, mas 
 
 Os _branches_ são uma ferramenta muito poderosa porque permitem programar de forma "concurrente". Podemos ter um branch principal, habitualmente o `master` que contenha a versão estável do nosso software, enquanto o desenvolvimento é feito noutros _branches_. Assim, podemos ter, por exemplo, um _branch_ por cada grande funcionalidade a implementar e trabalhar em várias ao mesmo tempo, sem misturar os seus _commits_ facilitando imenso a reversão, por exemplo. Depois, quando funcionalidade é acabada, o seu _branch_ é _merged_ com o `master` e eliminado.
 
+![GitHub]({{ 'img/github-logo.png' | relative_url }})
 
-![GitHub](/img/github-logo.png)
 # GitHub - Working remote
 
 Parabéns por teres chegado aqui! Esta secção vai ser muito mais breve! Agora que já sabes os básicos de Git, vamos falar sobre a parte **_remote_** do Git e onde é que o GitHub entra.
@@ -869,18 +869,17 @@ Para um projeto, há três formas de ter um repositório no GitHub:
 
 Criar um repositório remote antes de começar um projeto é a forma mais fácil de o fazer. Basta entrar no GitHub, e clicar em **New**.
 
-![github1](/img/github1.png)
-
+![github1]({{ 'img/github1.png' | relative_url }})
 
 Na página que se abre, escolhemos o nome do repositório, escrevemos, opcionalmente, uma descrição e se queremos que seja público ou privado.
 
 Como pretendemos clonar o repositório para o computador, inicializar com o README. Também temos a opção de escolher inicializar o repositório com um `.gitignore` pré-definido: dependendo da tecnologia que vamos usar no projeto, pode dar bastante jeito escolher começar com um `.gitignore` genérico para essa linguagem e irmos adaptando conforme necessário. Podemos também escolher uma licença. Se não escolhermos nenhuma, as leis normais dos direitos de autor aplicam-se. O botão informativo ao lado liga a [esta página](https://choosealicense.com/), que explica todos os detalhes de escolher, ou não, uma licença.
 
-![github2](/img/github2.png)
+![github2]({{ 'img/github2.png' | relative_url }})
 
 Depois, é só clicar no botão de clonar, copiar o _link_, abrir um termainal na diretoria onde queremos ter o repositório e executar o comando `git clone <link>`, substituindo `<link>` pelo _link_ que copiamos. Se o repositório for privado, o Git pedir-nos-á as nossas credenciais de acesso ao GitHub: o username e a password.
 
-![github3](/img/github3.png)
+![github3]({{ 'img/github3.png' | relative_url }})
 
 O repositório está pronto a ser usado! A sua diretoria tem o mesmo nome que o repositório no GitHub. Vamos ver como tirar partido do GitHub mais à frente.
 
@@ -896,7 +895,7 @@ O processo é parecido com o do **ponto 1**. A única diferença na criação do
 
 Depois de criado, copiamos o _link_.
 
-![github4](/img/github4.png)
+![github4]({{ 'img/github4.png' | relative_url }})
 
 No nosso repositório local no _branch_ `master`, executamos o comando
 
@@ -961,7 +960,7 @@ Se para um trabalho de grupo tiveres, no GitHub, um repositório privado (o que 
 
 Tal é feito no separador _Settings_, em _Manage Access_. Para convidar um colaborador, basta clicar no botão, escrever o username do teu colega (que também precisa de ter uma conta no GitHub) e esperar que ele receba um email e aceite o convite.
 
-![github5](/img/github5.png)
+![github5]({{ 'img/github5.png' | relative_url }})
 
 Depois de teres convidado os teus colegas, têm de definir um _workflow_. Como é que vão fazer os _pushes_ para o remote e sincronizar o código entre vocês?
 
@@ -977,11 +976,11 @@ Nesta solução, como na anterior, o `master` reúne o trabalho acabado de toda 
 
 Criar um _Pull Request_ de um _branch_ recentemente enviado é fácil: basta ir ao gitHub do repositório e clicar no botão _Compare & pull request_. O GitHub assume, por defeito, que queres fazer um _Pull Request_ do teu _branch_ para o `master`.
 
-![github6](/img/github6.png)
+![github6]({{ 'img/github6.png' | relative_url }})
 
 De seguida, basta preencher o título, ou usar o pré-definido pelo GitHub, escrever um comentário, opcionalmente, e escolher _Reviewers_, o que notificará os colegas escolhidos que fixeste um Pull Request e precisas de uma _Review_.
 
-![github7](/img/github7.png)
+![github7]({{ 'img/github7.png' | relative_url }})
 
 Enquanto o _Pull Request_ está aberto, os teus colegas podem deixar comentário e sugestões. Se decideres alterar alguma coisa, basta fazê-lo no mesmo _branch_ e, quando terminares, fazeres o `git push` normal. O GitHub adicionará automaticamente os novos _commits_ ao teu _Pull Request_.
 
@@ -990,7 +989,7 @@ Quando o teu _Pull Request_ for aprovado podes fazer _merge_. Podes escolher uma
 - _Squash and merge_: esta opção altera a história do repositório: se tiveres mais do que um _commit_ no teu _branch_, esta opção junta-os todos num único _commit_, fazendo depois um _merge_ normal. Esta é uma opção interessante porque, durante o desenvolvimento, muitas vezes fazemos _commits_ pequenos que não importam na escala do projeto e que tornariam difícil a consulta do histórico do ´master´, devido à sua quantidade, sendo substituídos por um único _commit_ que engloba toda a funcionalidade.
 - _Rebase and merge_: também é uma opção interessante e também altera a história do repositório. No entanto, é uma opção mais avançada que não está no escopo deste guião.
 
-![github8](/img/github8.png)
+![github8]({{ 'img/github8.png' | relative_url }})
 
 E pronto! As tuas alterações fazem parte do `master`. Assim, se já não precisares dele, podes eliminar o _branch_ remoto (o teu _branch_ local não é eliminado, tal só pode ser feito por ti no teu PC).
 
