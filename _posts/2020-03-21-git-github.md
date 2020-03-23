@@ -11,7 +11,7 @@ O Git é o _standard_ da indústria quando se fala em controlo de versões. Se j
 
 No curso, a grande maioria utiliza o Git em conjunto com o GitHub. Por estarem tão interligados no nosso _workflow_, por vezes é difícil distinguir o que é que é Git e o que é que é GitHub. Algo que também acontece é usarmos o Git e GitHub como uma simples plataforma de partilha de código, em que nós fazemos _push_ e os nossos colegas fazem _pull_, parecido, em grande forma, a enviar os ficheiros de código pelo Facebook Messenger.
 
-Este guia visa clarificar o que são o Git e o GitHub e como devem ser utilizados, dando exemplos práticos desde a instalação do Git à programação em paralelo via GitHub. O guia está feito para ser acompanhado num ambiente Unix (seja em Mac ou numa distribuição Linux), que é o que aconselhamos para quem está a aprender. Sendo _cross-platform_, o Git também funciona no Windows, mas aconselhamos mesmo a que dês os primeiros passos num ambiente Unix. Apesar de haver aplicações gráficas para usar Git, vamos usar exclusivamente o terminal Depois de aprenderes, está à vontade para usar qualquer aplicação gráfica que gostes; é mais fácil passar do terminal para um ambiente gráfico do que o contrário.
+Este guia visa clarificar o que são o Git e o GitHub e como devem ser utilizados, dando exemplos práticos desde a instalação do Git à programação em paralelo via GitHub. O guia está feito para ser acompanhado num ambiente Unix (seja em Mac ou numa distribuição Linux), que é o que aconselhamos para quem está a aprender. Sendo _cross-platform_, o Git também funciona no Windows e não terás qualquer problema em seguir este guião nesse SO. Apesar de haver aplicações gráficas para usar Git, vamos usar exclusivamente o terminal Depois de aprenderes, está à vontade para usar qualquer aplicação gráfica que gostes; é mais fácil passar do terminal para um ambiente gráfico do que o contrário.
 
 A primeira parte, **Git Basics**, é um tutorial de Git que não assume qualquer conhecimento prévido da plataforma. Se já te sentes confortável com o Git e só pretendes aprender como melhorar o _workflow_ do teu grupo, podes passar diretamente para a secção **GitHub - Working remote**.
 
@@ -42,7 +42,10 @@ $ sudo pacman -S git
 
 **[Mac/Windows](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)**
 
-Depois de instalado, convém ser uma pequena configuração que consiste em identificarem-se ao Git:
+**Nota:** Na instalação em Windows, podes aceitar as opções recomenddas. Aproveita é para trocares o editor de texto _default_ para o teu favorito, assim poderás, mais abaixo, ignorar essa configuração.
+
+
+Depois de instalado, convém fazer uma pequena configuração que consiste em identificarem-se ao Git:
 
 ```bash
 $ git config --global user.name "Your Name Comes Here"
@@ -51,6 +54,22 @@ $ git config --global user.email you@email.com
 
 {: .box-note}
 **Nota:** Isto serve para o Git identificar o código que submeteram como vosso, mas expõe o vosso email se colocarem o vosso repositório online e o tornarem público.
+
+Podem também alterar o editor de texto do Git com o comando
+
+```
+$ git config --global core.editor "nome_do_editor" 
+```
+
+em que nome "nome_do_editor" é o nome que usariam para abrir o editor de texto através do terminal. Por exemplo, para definir o Visual Studio Code, o comando seria
+
+```
+$ git config --global core.editor "code" 
+```
+
+{: .box-warning}
+**Aviso para os utilizadores de Windows:** Para seguir este guia, deverás usar a **Git Bash**. A Git Bash é um emulador de `bash` para Windows e é instalado automaticamente com o Git. Se usares a Git Bash, deves poder seguir o tutorial tal e qual como está.
+
 
 ## Repositórios
 
@@ -513,13 +532,13 @@ Mas e se eu já tiver feito _commit_ do que quero reverter? Nesse caso, posso us
 ```
 $ git log
 commit db13e27b66e5020ae73991ea89d3cd2dd15dab90 (HEAD -> master)
-Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 Date:   Sun Mar 22 13:23:24 2020 +0000
 
     Commit a apagar
 
 commit bed65eefe12d19d26c9a7a2ac847245982eba007
-Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 Date:   Sun Mar 22 12:10:53 2020 +0000
 
     Move binaries to 'build/' and ignore 'build/' and all PDFs
@@ -543,7 +562,7 @@ e aceito a mensagem pré-definida que o Git escreve para o _commit_ inverso. Con
 ```
 $ git log
 commit 0ec1358f0af1a8be7e8d2f1191bffe368b7b6585 (HEAD -> master)
-Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 Date:   Sun Mar 22 13:25:39 2020 +0000
 
     Revert "Commit a apagar"
@@ -551,13 +570,13 @@ Date:   Sun Mar 22 13:25:39 2020 +0000
     This reverts commit db13e27b66e5020ae73991ea89d3cd2dd15dab90.
 
 commit db13e27b66e5020ae73991ea89d3cd2dd15dab90
-Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 Date:   Sun Mar 22 13:23:24 2020 +0000
 
     Commit a apagar
 
 commit bed65eefe12d19d26c9a7a2ac847245982eba007
-Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 Date:   Sun Mar 22 12:10:53 2020 +0000
 
     Move binaries to 'build/' and ignore 'build/' and all PDFs
@@ -781,31 +800,31 @@ Podemos ver um esquema parecido a partir do Git:
 $ git log --graph
 *   commit 843a2893407150a66d2a2bab93107ad27760f89a  (HEAD -> master)
 |\  Merge: d1c55cb e7111d4
-| | Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+| | Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 | | Date:   Sun Mar 22 16:35:58 2020 +0000
 | | 
 | |     Merge branch 'branch2'
 | | 
 | * commit e7111d4d2f101c55cb5d6d2c5ed5fd855bec6fd3  (branch2)
-| | Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+| | Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 | | Date:   Sun Mar 22 15:29:28 2020 +0000
 | | 
 | |     Add a file
 | | 
 * | commit d1c55cb0b3997724ab70b9aca9a2fc4117d456e0
-| | Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+| | Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 | | Date:   Sun Mar 22 15:44:53 2020 +0000
 | | 
 | |     Add Hello World
 | | 
 * | commit a416568514b37f0275b263213637fdaf56b45f2a
-|/  Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+|/  Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 |   Date:   Sun Mar 22 15:06:50 2020 +0000
 |   
 |       Add a new test file
 | 
 * commit 0ec1358f0af1a8be7e8d2f1191bffe368b7b6585
-| Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+| Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 | Date:   Sun Mar 22 13:25:39 2020 +0000
 | 
 |     Revert "Commit a apagar"
@@ -813,25 +832,25 @@ $ git log --graph
 |     This reverts commit db13e27b66e5020ae73991ea89d3cd2dd15dab90.
 | 
 * commit db13e27b66e5020ae73991ea89d3cd2dd15dab90
-| Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+| Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 | Date:   Sun Mar 22 13:23:24 2020 +0000
 | 
 |     Commit a apagar
 | 
 * commit bed65eefe12d19d26c9a7a2ac847245982eba007
-| Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+| Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 | Date:   Sun Mar 22 12:10:53 2020 +0000
 | 
 |     Move binaries to 'build/' and ignore 'build/' and all PDFs
 | 
 * commit a582641704c87d0912355aba9cfa189613c56cac
-| Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+| Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
 | Date:   Sun Mar 22 11:34:18 2020 +0000
 | 
 |     Add .gitignore
 | 
 * commit ed10169a2ed0fe5b7aa756f501665d925cb5dd10
-  Author: Miguel Brandão <mickael.a.brandao@gmail.com>
+  Author: CeSIUM <pedagogico@cesium.di.uminho.pt>
   Date:   Sun Mar 22 11:22:52 2020 +0000
   
       Init
@@ -1000,4 +1019,4 @@ O mundo do Git é imenso, mas agora, se chegaste até aqui, deves conseguir pelo
 
 Há muitos  _sites_ onde podes aprender e muitas ferramentas que podes instalar para melhorar a forma como interages com o Git e o GitHub, é só procurar :)
 
-Se adoraste este guia, se o destestaste, se tens críticas construtivas ou ideias que o possam melhorar, podes-nos contactar diretamente por email (pedagogico@cesium.uminho.pt).
+Se adoraste este guia, se o destestaste, se tens críticas construtivas ou ideias que o possam melhorar, podes-nos contactar diretamente por email (pedagogico@cesium.di.uminho.pt).
