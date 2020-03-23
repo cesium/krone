@@ -169,7 +169,7 @@ No commits yet
 
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
-	new file:   src/Makefile
+	new file:   Makefile
 	new file:   src/interface.c
 	new file:   src/main.c
 	new file:   src/program
@@ -209,7 +209,7 @@ Changes to be committed:
 	new file:   include/pair.h
 	new file:   include/sort.h
 	new file:   include/user.h
-	new file:   src/Makefile
+	new file:   Makefile
 	new file:   src/interface.c
 	new file:   src/main.c
 	new file:   src/program
@@ -248,7 +248,7 @@ Changes to be committed:
 	new file:   include/pair.h
 	new file:   include/sort.h
 	new file:   include/user.h
-	new file:   src/Makefile
+	new file:   Makefile
 	new file:   src/interface.c
 	new file:   src/main.c
 	new file:   src/sort.c
@@ -369,7 +369,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
 	modified:   .gitignore
-	modified:   src/Makefile
+	modified:   Makefile
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -396,7 +396,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
 	modified:   .gitignore
-	modified:   src/Makefile
+	modified:   Makefile
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
@@ -410,7 +410,7 @@ On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
 	modified:   .gitignore
-	modified:   src/Makefile
+	modified:   Makefile
 $ git commit -m "Move binaries to 'build/' and ignore 'build/' and all PDFs"
 ```
 
@@ -460,16 +460,16 @@ index 0000000..89ab085
 @@ -0,0 +1,2 @@
 +*.pdf
 +build/
-diff --git a/src/Makefile b/src/Makefile
+diff --git a/Makefile b/Makefile
 index e4fe0a5..b2d8630 100755
---- a/src/Makefile
-+++ b/src/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -19,7 +19,7 @@ $(ODIR)/%.o : %.c $(DEPS)
         $(CC) $(CFLAGS) -c -o $@ $<
  
  program: $(SOURCES_OBJ) $(MY_LIBS_OBJ)
 -       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o program $(LIBS)
-+       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o ../build/program $(LIBS)
++       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o build/program $(LIBS)
  
  clean:
         rm obj/*.o
