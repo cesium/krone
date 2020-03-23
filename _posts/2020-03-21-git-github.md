@@ -1021,6 +1021,8 @@ O mundo do Git é imenso, mas agora, se chegaste até aqui, deves conseguir pelo
 
 Há muitos  _sites_ onde podes aprender e muitas ferramentas que podes instalar para melhorar a forma como interages com o Git e o GitHub, é só procurar :)
 
+[Este site](https://learngitbranching.js.org/), por exemplo, é forma engraçada de aprenderes e praticares um pouco de forma interativa.
+
 Se adoraste este guia, se o destestaste, se tens críticas construtivas ou ideias que o possam melhorar, podes-nos contactar diretamente por email (<pedagogico@cesium.uminho.pt>).
 
 # Bibliografia
