@@ -412,13 +412,8 @@ On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
 	modified:   .gitignore
-<<<<<<< HEAD
 	modified:   Makefile
 $ git commit -m "Move binaries to 'build/' and ignore 'build/' and all PDFs"
-=======
-	modified:   src/Makefile
-$ git commit -m "Move binaries to 'bin/' and ignore 'bin/' and all PDFs"
->>>>>>> aaa30ac85fd5a3f8503d77b1818c597f314642a2
 ```
 
 {: .box-warning}
@@ -466,13 +461,8 @@ index 0000000..89ab085
 +++ b/.gitignore
 @@ -0,0 +1,2 @@
 +*.pdf
-<<<<<<< HEAD
 +build/
 diff --git a/Makefile b/Makefile
-=======
-+bin/
-diff --git a/src/Makefile b/src/Makefile
->>>>>>> aaa30ac85fd5a3f8503d77b1818c597f314642a2
 index e4fe0a5..b2d8630 100755
 --- a/Makefile
 +++ b/Makefile
@@ -481,11 +471,7 @@ index e4fe0a5..b2d8630 100755
  
  program: $(SOURCES_OBJ) $(MY_LIBS_OBJ)
 -       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o program $(LIBS)
-<<<<<<< HEAD
 +       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o build/program $(LIBS)
-=======
-+       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o ../bin/program $(LIBS)
->>>>>>> aaa30ac85fd5a3f8503d77b1818c597f314642a2
  
  clean:
         rm obj/*.o
