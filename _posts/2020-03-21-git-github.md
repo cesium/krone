@@ -413,7 +413,7 @@ Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
 	modified:   .gitignore
 	modified:   Makefile
-$ git commit -m "Move binaries to 'build/' and ignore 'build/' and all PDFs"
+$ git commit -m "Move binaries to 'bin/' and ignore 'bin/' and all PDFs"
 ```
 
 {: .box-warning}
@@ -461,7 +461,7 @@ index 0000000..89ab085
 +++ b/.gitignore
 @@ -0,0 +1,2 @@
 +*.pdf
-+build/
++bin/
 diff --git a/Makefile b/Makefile
 index e4fe0a5..b2d8630 100755
 --- a/Makefile
@@ -471,7 +471,7 @@ index e4fe0a5..b2d8630 100755
  
  program: $(SOURCES_OBJ) $(MY_LIBS_OBJ)
 -       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o program $(LIBS)
-+       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o build/program $(LIBS)
++       $(CC) $(CFLAGS) $(wildcard $(ODIR)/*.o)  $(wildcard $(OLDIR)/*.o) -o bin/program $(LIBS)
  
  clean:
         rm obj/*.o
